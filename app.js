@@ -34,10 +34,7 @@ mongoose.connect(process.env.DB_CONNECTION,(err)=>{
 app.use('/users', users)
 
 
-app.get('/', (req, res)=>{
-    res.send("hello world!")
 
-})
 
 app.listen(port, (req, res)=>{
     console.log(`server is listening on port ${port}`)
