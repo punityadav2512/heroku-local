@@ -7,7 +7,7 @@ const passport = require('passport');
 
 const app = express();
 require('dotenv').config();
-app.use(express.static(path.join(__dirname,"dist/mega-front")));
+app.use(express.static(path.join(__dirname,"dist")));
 // SEEDERS
 
 const {seedAdmin} = require('./seeders/admin');
