@@ -4,10 +4,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const users = require('./routes/users');
 const passport = require('passport');
+const path = require('path');
 
 const app = express();
 require('dotenv').config();
-app.use(express.static(path.join(__dirname,"dist")));
+app.use(express.static(path.join(__dirname,"dist/mega-front")));
 // SEEDERS
 
 const {seedAdmin} = require('./seeders/admin');
@@ -34,7 +35,10 @@ mongoose.connect(process.env.DB_CONNECTION,(err)=>{
 app.use('/users', users)
 
 
+app.get('/*', function(req,res) {
 
+    res.sendFile(path.join(__dirname+'/dist/mega-front/index.html'));
+    });
 
 app.listen(port, (req, res)=>{
     console.log(`server is listening on port ${port}`)
